@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
 <meta name="generator" content="AsciiDoc 8.6.9" />
-<title>SALDL(1)</title>
+<title>saldl: A command-line downloader with unique features based on libcurl</title>
 <style type="text/css">
 /* Shared CSS for AsciiDoc xhtml11 and html5 backends */
 
@@ -731,513 +731,55 @@ asciidoc.install(2);
 /*]]>*/
 </script>
 </head>
-<body class="manpage">
+<body class="article">
 <div id="header">
-<h1>
-SALDL(1) Manual Page
-</h1>
+<h1>saldl: A command-line downloader with unique features based on libcurl</h1>
 <div id="toc">
   <div id="toctitle">Table of Contents</div>
   <noscript><p><b>JavaScript must be enabled in your browser to display the table of contents.</b></p></noscript>
 </div>
-<h2>NAME</h2>
-<div class="sectionbody">
-<p>saldl -
-   a lightweight CLI downloader with unique features based on libcurl.
-</p>
-</div>
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="_synopsis">SYNOPSIS</h2>
+<h2 id="_preface">Preface</h2>
 <div class="sectionbody">
-<div class="paragraph"><p><strong>saldl</strong> [<strong>OPTIONS</strong>] <em>URI</em></p></div>
+<div class="paragraph"><p>By default, saldl splits a download into fixed-sized chunks and download
+them in-order with multiple concurrent connections.</p></div>
+<div class="paragraph"><p>Many options are availabe. They are documented in
+the <a href="#man">manual page</a>.</p></div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_description">DESCRIPTION</h2>
+<h2 id="_screenshot">Screenshot</h2>
 <div class="sectionbody">
-<div class="paragraph"><p>saldl(1) is a CLI downloader based on libcurl. By default, it splits
-a download into chunks and download them in order with multiple concurrent
-connections. Many <strong>OPTIONS</strong> are available to change the default behavior.</p></div>
+<div class="literalblock">
+<div class="content">
+<pre><code>-s4m =&gt; set chunk_size to 4 MiB.
+-c4  =&gt; use 4 concurrent connections.
+-l4  =&gt; download the last 4 chunks first.</code></pre>
+</div></div>
+<div class="paragraph"><p><span class="image">
+<img src="https://raw.githubusercontent.com/saldl/misc/master/saldl.png" alt="saldl screenshot" />
+</span></p></div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_unit_suffixes">UNIT SUFFIXES</h2>
+<h2 id="_github_project_page">Github Project Page</h2>
 <div class="sectionbody">
-<div class="paragraph"><p>All <strong>OPTIONS</strong> that take an argument representing a byte value can be
-suffixed with one of the following letters:</p></div>
-<div class="dlist"><dl>
-<dt class="hdlist1">
- 
-</dt>
-<dd>
-<div class="dlist"><dl>
-<dt class="hdlist1">
-<strong>K</strong> or <strong>k</strong>
-</dt>
-<dd>
-<p>
-    multiply size by 1024 (KiB).
-</p>
-</dd>
-<dt class="hdlist1">
-<strong>M</strong> or <strong>m</strong>
-</dt>
-<dd>
-<p>
-    multiply size by 1024*1024 (MiB).
-</p>
-</dd>
-<dt class="hdlist1">
-<strong>G</strong> or <strong>g</strong>
-</dt>
-<dd>
-<p>
-    multiply size by 1024*1024*1024 (GiB).
-</p>
-</dd>
-</dl></div>
-</dd>
-</dl></div>
+<div class="paragraph"><p><a href="https://github.com/saldl/saldl">https://github.com/saldl/saldl</a></p></div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_files">FILES</h2>
+<h2 id="man">Manual/Documentation</h2>
 <div class="sectionbody">
-<div class="paragraph"><p>TODO</p></div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_chunk_progress_states">CHUNK PROGRESS STATES</h2>
-<div class="sectionbody">
-<div class="dlist"><dl>
-<dt class="hdlist1">
-<strong>4</strong>
-</dt>
-<dd>
-<p>
-  Chunk already merged in <em>&lt;filename&gt;.part.sal</em>
-</p>
-</dd>
-<dt class="hdlist1">
-<strong>3</strong>
-</dt>
-<dd>
-<p>
-  Chunk downloaded, but still not merged.
-  Merging is done by an event loop that runs in its own thread.
-  This state should be transient. Unless network speeds are faster
-  than IO speeds. You might want to use <strong>-m</strong>/<strong>--memory-buffers</strong> if
-  that&#8217;s the case.
-</p>
-</dd>
-<dt class="hdlist1">
-<strong>2</strong>
-</dt>
-<dd>
-<p>
-  Chunk download is in progress.
-</p>
-</dd>
-<dt class="hdlist1">
-<strong>1</strong>
-</dt>
-<dd>
-<p>
-  Chunk is queued for download. This is a transient state you shouldn&#8217;t see.
-  Unless you have serious load/congestion problems in your system.
-</p>
-</dd>
-<dt class="hdlist1">
-<strong>0</strong>
-</dt>
-<dd>
-<p>
-  Chunk still not queued for download. That doesn&#8217;t mean it&#8217;s necessarily
-  empty. It could have made progress in a previous session.
-</p>
-</dd>
-</dl></div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_options">OPTIONS</h2>
-<div class="sectionbody">
-<div class="sect2">
-<h3 id="_chunk_sizes_and_connections">Chunk sizes and connections</h3>
-<div class="dlist"><dl>
-<dt class="hdlist1">
-<strong>-S, --single</strong>
-</dt>
-<dd>
-<p>
-  a single chunk single connection mode (wget-like).
-</p>
-</dd>
-<dt class="hdlist1">
-<strong>-w, --whole-file</strong>
-</dt>
-<dd>
-<p>
-  work like typical accelerators (no. of chunks = no. of connections).
-  (<strong>-s</strong>/<strong>--chunk-size</strong> becomes a minimum)
-</p>
-</dd>
-<dt class="hdlist1">
-<strong>-s <em>size</em>, --chunk-size=<em>size</em></strong>
-</dt>
-<dd>
-<p>
-  Set size for chunks in bytes.
-  (can take a unit suffix)
-  (<strong>default</strong>: <em>1m</em>)
-</p>
-</dd>
-<dt class="hdlist1">
-<strong>-c <em>num</em>, --connections=<em>num</em></strong>
-</dt>
-<dd>
-<p>
-  number of concurrent connections.
-  (<strong>default</strong>: <em>6</em>)
-</p>
-</dd>
-<dt class="hdlist1">
-<strong>-l <em>num</em>, --last-chunks_first=<em>num</em></strong>
-</dt>
-<dd>
-<p>
-  the number of last chunks that should be downloaded first.
-  (<strong>default</strong>: <em>0</em>)
-</p>
-</dd>
-<dt class="hdlist1">
-<strong>-a <em>num</em>, --auto-size=<em>num</em></strong>
-</dt>
-<dd>
-<p>
-  modify chunk size so that chunk progress can fit in <em>num</em> lines.
-</p>
-</dd>
-</dl></div>
-</div>
-<div class="sect2">
-<h3 id="_filenames">Filenames</h3>
-<div class="dlist"><dl>
-<dt class="hdlist1">
-<strong>-o <em>filename</em>, --output-filename=<em>filename</em></strong>
-</dt>
-<dd>
-<p>
-  Use this filename instead of the detected name.
-</p>
-</dd>
-<dt class="hdlist1">
-<strong>-n, --no-path</strong>
-</dt>
-<dd>
-<p>
-  assume path is relative, replace all / or : with _.
-</p>
-</dd>
-<dt class="hdlist1">
-<strong>-D <em>dirname</em>, --root-dir=<em>dirname</em></strong>
-</dt>
-<dd>
-<p>
-  Prepend filename with this path.
-  (Could be useful for external tools. e.g. <strong>flashgot</strong>).
-</p>
-</dd>
-<dt class="hdlist1">
-<strong>-G, --keep-GET-attrs</strong>
-</dt>
-<dd>
-<p>
-  keep GET attributes at the end of a filename.
-  (This option has no effect if <strong>-o</strong>/<strong>--output-filename</strong> is used)
-</p>
-</dd>
-<dt class="hdlist1">
-<strong>-A, --no-attachment-detection</strong>
-</dt>
-<dd>
-<p>
-  Do not use Content-Disposition attachment filename if present.
-</p>
-</dd>
-<dt class="hdlist1">
-<strong>-t, --auto-trunc</strong>
-</dt>
-<dd>
-<p>
-  truncate filename if name or path is too long.
-</p>
-</dd>
-<dt class="hdlist1">
-<strong>-T, --smart-trunc</strong>
-</dt>
-<dd>
-<p>
-  same as <strong>--auto-trunc</strong> but tries to keep the file extension.
-  (overrides <strong>-t</strong>/<strong>--auto-trunc</strong>)
-</p>
-</dd>
-<dt class="hdlist1">
-<strong>-R <em>bandwidth</em>, --connection-max-rate=<em>bandwidth</em></strong>
-</dt>
-<dd>
-<p>
-  maximum rate per connection in bytes/s.
-  (can take a unit suffix)
-  (<strong>default</strong>: <em>0</em> [unlimited])
-</p>
-</dd>
-<dt class="hdlist1">
-<strong>-r, --resume</strong>
-</dt>
-<dd>
-<p>
-  resume download.
-  (requires a <em>&lt;filename&gt;.ctrl.sal</em> to be present with a matching filesize)
-</p>
-</dd>
-<dt class="hdlist1">
-<strong>-f, --force</strong>
-</dt>
-<dd>
-<p>
-  overwrite <em>&lt;filename&gt;.part.sal</em> file if not resuming from a non-zero offset.
-</p>
-</dd>
-<dt class="hdlist1">
-<strong>-d, --dry-run</strong>
-</dt>
-<dd>
-<p>
-  do not download, only display information.
-</p>
-</dd>
-<dt class="hdlist1">
-<strong>-m, --memory-buffers</strong>
-</dt>
-<dd>
-<p>
-  Use memory buffers instead of temp files for downloading segments.
-  (<strong>Warning</strong>: All unmerged chunks will be lost if the download is interrupted)
-</p>
-</dd>
-<dt class="hdlist1">
-<strong>-N, --no-proxy</strong>
-</dt>
-<dd>
-<p>
-  disable all proxies even if set in the environment.
-</p>
-</dd>
-<dt class="hdlist1">
-<strong>-O, --no-timeouts</strong>
-</dt>
-<dd>
-<p>
-  disable all timeouts.
-</p>
-</dd>
-</dl></div>
-</div>
-<div class="sect2">
-<h3 id="_custom_requests">Custom Requests</h3>
-<div class="dlist"><dl>
-<dt class="hdlist1">
-<strong>-E, --auto-referer</strong>
-</dt>
-<dd>
-<p>
-  auto set referer in case of a redirect.
-</p>
-</dd>
-<dt class="hdlist1">
-<strong>-e <em>referer</em>, --referer=<em>referer</em></strong>
-</dt>
-<dd>
-<p>
-  set referer.
-</p>
-</dd>
-<dt class="hdlist1">
-<strong>-K <em>cookie_file</em>, --cookie-file=<em>cookie_file</em></strong>
-</dt>
-<dd>
-<p>
-  File to read cookies from.
-</p>
-</dd>
-<dt class="hdlist1">
-<strong>-k <em>cookies</em>, --inline-cookies=<em>cookies</em></strong>
-</dt>
-<dd>
-<p>
-  Add cookies.
-</p>
-</dd>
-<dt class="hdlist1">
-<strong>-p <em>post</em>, --post=<em>post</em></strong>
-</dt>
-<dd>
-<p>
-  Send those fields in a simple POST request (no multipart).
-</p>
-</dd>
-<dt class="hdlist1">
-<strong>-P <em>raw_post</em>, --raw-post=<em>raw_post</em></strong>
-</dt>
-<dd>
-<p>
-  Send this POST request as-is including headers (supports multipart)
-</p>
-</dd>
-<dt class="hdlist1">
-<strong>-U, --no-user-agent</strong>
-</dt>
-<dd>
-<p>
-  Don&#8217;t set user agent (disables default agent).
-</p>
-</dd>
-<dt class="hdlist1">
-<strong>-u <em>agent</em>, --user-agent=<em>agent</em></strong>
-</dt>
-<dd>
-<p>
-  set user agent.
-</p>
-</dd>
-<dt class="hdlist1">
-<strong>--TLS-no-verify</strong>
-</dt>
-<dd>
-<p>
-  Skip TLS/SSL verification.
-</p>
-</dd>
-</dl></div>
-<div class="paragraph"><p>The following settings should not be generally used, but might help in rare
-cases:</p></div>
-<div class="dlist"><dl>
-<dt class="hdlist1">
-<strong>-H, --use-HEAD</strong>
-</dt>
-<dd>
-<p>
-  Use <em>HEAD</em> instead of <em>GET</em> to get download information from servers.
-</p>
-</dd>
-<dt class="hdlist1">
-<strong>-I, --no-remote-info</strong>
-</dt>
-<dd>
-<p>
-  Just <em>GET</em>. Don&#8217;t do anything else.
-  (Single mode is forced, resume is disabled, server responses are not parsed)
-</p>
-</dd>
-<dt class="hdlist1">
-<strong>-F, --assume-partial-support</strong>
-</dt>
-<dd>
-<p>
-  Don&#8217;t use this. It&#8217;s <strong>DANGEROUS</strong>.
-</p>
-</dd>
-</dl></div>
-</div>
-<div class="sect2">
-<h3 id="_networks_settings">Networks Settings</h3>
-<div class="dlist"><dl>
-<dt class="hdlist1">
-<strong>-x <em>proxy</em>, --proxy=<em>proxy</em></strong>
-</dt>
-<dd>
-<p>
-  set proxy.
-</p>
-</dd>
-<dt class="hdlist1">
-<strong>-X <em>proxy</em>, --tunnel-proxy=<em>proxy</em></strong>
-</dt>
-<dd>
-<p>
-  similar to --proxy but tunneling all traffic through it.
-</p>
-</dd>
-<dt class="hdlist1">
-<strong>-V , --verbosity</strong>
-</dt>
-<dd>
-<p>
-  Increase verbosity level.
-</p>
-</dd>
-<dt class="hdlist1">
-<strong>-C, --no-color</strong>
-</dt>
-<dd>
-<p>
-  Disable colors in output. Passing it twice will disable all other formattings.
-</p>
-</dd>
-</dl></div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_exit_status">EXIT STATUS</h2>
-<div class="sectionbody">
-<div class="dlist"><dl>
-<dt class="hdlist1">
-<strong>0</strong>
-</dt>
-<dd>
-<p>
-    Success
-</p>
-</dd>
-<dt class="hdlist1">
-<strong>1</strong>
-</dt>
-<dd>
-<p>
-   A <em>fatal</em> error happened. A helpful message should explain the message.
-</p>
-</dd>
-</dl></div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_bugs">BUGS</h2>
-<div class="sectionbody">
-<div class="paragraph"><p><a href="https://github.com/saldl/saldl/issues">https://github.com/saldl/saldl/issues</a></p></div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_author">AUTHOR</h2>
-<div class="sectionbody">
-<div class="paragraph"><p>Mohammad AlSaleh (<a href="mailto:MoSal@Github">MoSal@Github</a>).</p></div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_copying">COPYING</h2>
-<div class="sectionbody">
-<div class="paragraph"><p>Copyright (C) 2014-2015 Mohammad AlSaleh. Free use of this software is
-granted under the terms of the GNU Affero General Public License (AGPL).</p></div>
+<div class="paragraph"><p><a href="https://saldl.github.io/saldl.1.html">https://saldl.github.io/saldl.1.html</a></p></div>
 </div>
 </div>
 </div>
 <div id="footnotes"><hr /></div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-09-02 22:55:40 EEST
+Last updated 2015-09-07 22:57:20 EEST
 </div>
 </div>
 </body>

@@ -1,0 +1,28 @@
+= saldl: A command-line downloader with unique features based on libcurl
+:toc:
+
+== Preface
+
+By default, saldl splits a download into fixed-sized chunks and download
+them in-order with multiple concurrent connections.
+
+Many options are availabe. They are documented in
+the <<man,manual page>>.
+
+== Screenshot
+
+   -s4m => set chunk_size to 4 MiB.
+   -c4  => use 4 concurrent connections.
+   -l4  => download the last 4 chunks first.
+
+image:https://raw.githubusercontent.com/saldl/misc/master/saldl.png[saldl screenshot]
+
+
+== Github Project Page
+
+https://github.com/saldl/saldl
+
+[[man]]
+== Manual/Documentation
+
+https://saldl.github.io/saldl.1.html
