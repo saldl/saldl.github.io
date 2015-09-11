@@ -893,6 +893,16 @@ downloaded from scratch. Sub-chunk resume will work as expected.</p></div>
 <h3 id="ui-opts">UI Options</h3>
 <div class="dlist"><dl>
 <dt class="hdlist1">
+<strong>-C, --no-color</strong>
+</dt>
+<dd>
+<p>
+  Disable colors in output.<br />
+  Pass it twice (<strong>-CC</strong>) to disable all other formattings
+  (auto-set if not tty).
+</p>
+</dd>
+<dt class="hdlist1">
 <strong>-V , --verbosity</strong>
 </dt>
 <dd>
@@ -902,13 +912,19 @@ downloaded from scratch. Sub-chunk resume will work as expected.</p></div>
 </p>
 </dd>
 <dt class="hdlist1">
-<strong>-C, --no-color</strong>
+<strong>--verbose-libcurl</strong>
 </dt>
 <dd>
 <p>
-  Disable colors in output.<br />
-  Pass it twice (<strong>-CC</strong>) to disable all other formattings
-  (auto-set if not tty).
+   Enable libcurl&#8217;s verbose output. Regardless of verbosity level.
+</p>
+</dd>
+<dt class="hdlist1">
+<strong>--no-status</strong>
+</dt>
+<dd>
+<p>
+   Disable progress status output. (For debugging purposes only)
 </p>
 </dd>
 </dl></div>
@@ -1163,6 +1179,19 @@ downloaded from scratch. Sub-chunk resume will work as expected.</p></div>
   Send <em>raw-post-data</em> as-is including headers (supports multipart).
 </p>
 </dd>
+</dl></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Warning</div>
+</td>
+<td class="content">
+<div class="paragraph"><p><strong>--post</strong> and <strong>--raw-post</strong> will double-post by default. Unless
+<strong>-I</strong>/<strong>--no-remote-info</strong> is also passed.</p></div>
+</td>
+</tr></table>
+</div>
+<div class="dlist"><dl>
 <dt class="hdlist1">
 <strong>-U, --no-user-agent</strong>
 </dt>
@@ -1410,7 +1439,7 @@ directly to <em>&lt;filename&gt;.part.sal</em></p></div>
 <div class="sect1">
 <h2 id="_www">WWW</h2>
 <div class="sectionbody">
-<div class="paragraph"><p><a href="https://github.com/saldl/saldl">https://github.com/saldl/saldl</a></p></div>
+<div class="paragraph"><p><a href="https://saldl.github.io">https://saldl.github.io</a></p></div>
 </div>
 </div>
 <div class="sect1">
@@ -1436,7 +1465,7 @@ granted under the terms of the GNU Affero General Public License (AGPL).</p></di
 <div id="footnotes"><hr /></div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-09-07 22:30:54 EEST
+Last updated 2015-09-11 17:39:30 EEST
 </div>
 </div>
 </body>

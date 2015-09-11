@@ -1,10 +1,11 @@
-= saldl: A command-line downloader with unique features based on libcurl
+= saldl: An in-order multi-connection CLI downloader based on libcurl
 :toc:
 
 == Preface
 
-By default, saldl splits a download into fixed-sized chunks and download
-them in-order with multiple concurrent connections.
+By default, saldl is optimized for speed and early preview. saldl
+splits a download into fixed-sized chunks and download them in-order
+with multiple concurrent connections.
 
 Many options are availabe. They are documented in
 the <<man,manual page>>.
