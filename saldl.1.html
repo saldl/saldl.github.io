@@ -1148,6 +1148,36 @@ downloaded from scratch. Sub-chunk resume will work as expected.</p></div>
 </p>
 </dd>
 <dt class="hdlist1">
+<strong>-Z, --no-compress</strong>
+</dt>
+<dd>
+<p>
+  Don&#8217;t request a compressed response. And skip decompression if
+  compression was forced by the server.
+</p>
+</dd>
+<dt class="hdlist1">
+<strong>-z, --no-decompress</strong>
+</dt>
+<dd>
+<p>
+  Explicitly disable decompression. Even if we requested (default)
+  and received compressed data.
+</p>
+</dd>
+</dl></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph"><p><strong>-Z</strong>/<strong>--no-compress</strong> implies <strong>-z</strong>/<strong>--no-decompress</strong>.</p></div>
+</td>
+</tr></table>
+</div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
 <strong>-K <em>cookie-file</em>, --cookie-file=<em>cookie-file</em></strong>
 </dt>
 <dd>
@@ -1465,7 +1495,7 @@ granted under the terms of the GNU Affero General Public License (AGPL).</p></di
 <div id="footnotes"><hr /></div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-09-11 17:39:30 EEST
+Last updated 2015-09-13 20:18:24 EEST
 </div>
 </div>
 </body>
