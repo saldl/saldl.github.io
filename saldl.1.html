@@ -992,6 +992,19 @@ downloaded from scratch. Sub-chunk resume will work as expected.</p></div>
 </p>
 </dd>
 <dt class="hdlist1">
+<strong>-L <em>size</em>, --last-size-first=<em>size</em></strong>
+</dt>
+<dd>
+<p>
+  The minimum size that should be downloaded first at the end of
+  the file. <a href="#unit-suf"><strong>A unit suffix</strong></a> can be used.<br />
+  This should be useful when chunk-size is not known beforehand.
+  e.g. when <strong>-a/--auto-size</strong> is used.<br />
+  This option overrides <strong>-l/--last-chunks-first</strong>.
+  (<strong>default</strong>: <em>0</em>)
+</p>
+</dd>
+<dt class="hdlist1">
 <strong>-a <em>num</em>, --auto-size=<em>num</em></strong>
 </dt>
 <dd>
@@ -1400,6 +1413,19 @@ debugging/tracing purposes.</p></div>
   Enable verbose output in libcurl.
 </p>
 </dd>
+</dl></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>This can be enabled independently with
+the <a href="#ui-opts"><strong>--verbose-libcurl</strong></a> option.</p></div>
+</td>
+</tr></table>
+</div>
+<div class="dlist"><dl>
 <dt class="hdlist1">
 <strong>-VVVVVV</strong>
 </dt>
@@ -1495,7 +1521,7 @@ granted under the terms of the GNU Affero General Public License (AGPL).</p></di
 <div id="footnotes"><hr /></div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-09-13 20:18:24 EEST
+Last updated 2015-09-21 16:50:16 EEST
 </div>
 </div>
 </body>
