@@ -19,11 +19,15 @@ the <<man,manual page>>.
 image:https://raw.githubusercontent.com/saldl/misc/master/saldl.png[saldl screenshot]
 
 
-== Github Project Page
+== Project Page / Downloads
 
 https://github.com/saldl/saldl
 
 [[man]]
-== Manual/Documentation
+== Manual / Documentation
 
 https://saldl.github.io/saldl.1.html
+
+== Where can I ask questions?
+
+We have a https://github.com/saldl/saldl/issues/4[meta bug] dedicated for users questions.
