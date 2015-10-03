@@ -2,8 +2,10 @@
 
 *saldl* splits a download into fixed-sized chunks and download them
 in-order with multiple concurrent connections. Classic modes
-(single connection, no. of chunks = no. of connections) are also
-available as 'options'. All 'options' are documented in the <<man,manual page>>.
+(single chunk single connection, no. of chunks = no. of connections)
+are also available as 'options'.
+
+All 'options' are documented in the <<man,manual page>>.
 
 *saldl* is open-source and multi-platform. It is available for everyone
 under the terms of the https://www.gnu.org/licenses/agpl.txt[AGPL].
