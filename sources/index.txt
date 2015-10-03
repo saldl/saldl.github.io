@@ -27,5 +27,8 @@ https://github.com/saldl/saldl
 https://saldl.github.io/saldl.1.html
 
 == Where can I ask questions?
-We consider every question a user might have a bug in documentation.
-Having said that, we have a https://github.com/saldl/saldl/issues/4[dedicated meta bug for users questions].
+We consider every question a (potential) user might have a bug in
+documentation.
+
+Feel free to ask any question in
+the https://github.com/saldl/saldl/issues/4[dedicated meta bug for users questions].
