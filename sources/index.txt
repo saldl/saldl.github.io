@@ -1,14 +1,12 @@
-= saldl: An in-order multi-connection CLI downloader based on libcurl
-:toc:
+= saldl: A lightweight CLI downloader optimized for speed and early preview
 
-== Preface
+*saldl* splits a download into fixed-sized chunks and download them
+in-order with multiple concurrent connections. Classic modes
+(single connection, no. of chunks = no. of connections) are also
+available as 'options'. All 'options' are documented in the <<man,manual page>>.
 
-By default, saldl is optimized for speed and early preview. saldl
-splits a download into fixed-sized chunks and download them in-order
-with multiple concurrent connections.
-
-Many options are availabe. They are documented in
-the <<man,manual page>>.
+*saldl* is open-source and multi-platform. It is available for everyone
+under the terms of the https://www.gnu.org/licenses/agpl.txt[AGPL].
 
 == Screenshot
 
@@ -29,5 +27,5 @@ https://github.com/saldl/saldl
 https://saldl.github.io/saldl.1.html
 
 == Where can I ask questions?
-
-We have a https://github.com/saldl/saldl/issues/4[meta bug] dedicated for users questions.
+We consider every question a user might have a bug in documentation.
+Having said that, we have a https://github.com/saldl/saldl/issues/4[dedicated meta bug for users questions].
