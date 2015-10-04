@@ -1,4 +1,5 @@
 = image:https://raw.githubusercontent.com/saldl/misc/master/saldl_banner_alpha.png[width="100%", alt="saldl banner"]
+:title: saldl: A lightweight well-featured CLI downloader optimized for speed and early preview
 
 *saldl* is a lightweight yet well-featured CLI downloader optimized for speed
 and early preview.
