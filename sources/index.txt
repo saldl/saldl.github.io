@@ -1,6 +1,9 @@
-= saldl: A lightweight CLI downloader optimized for speed and early preview
+= image:https://raw.githubusercontent.com/saldl/misc/master/saldl_banner_alpha.png[width="100%", alt="saldl banner"]
 
-*saldl* splits a download into fixed-sized chunks and download them
+*saldl* is a lightweight yet well-featured CLI downloader optimized for speed
+and early preview.
+
+By default, *saldl* splits a download into fixed-sized chunks and download them
 in-order with multiple concurrent connections. Classic modes
 (single chunk single connection, no. of chunks = no. of connections)
 are also available as 'options'.
@@ -16,7 +19,7 @@ under the terms of the https://www.gnu.org/licenses/agpl.txt[AGPL].
    -c4  => use 4 concurrent connections.
    -l4  => download the last 4 chunks first.
 
-image:https://raw.githubusercontent.com/saldl/misc/master/saldl.png[saldl screenshot]
+image:https://raw.githubusercontent.com/saldl/misc/master/saldl.png[width="100%", alt="saldl screenshot"]
 
 
 == Project Page / Downloads
