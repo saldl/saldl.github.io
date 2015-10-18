@@ -1,18 +1,38 @@
 = image:https://raw.githubusercontent.com/saldl/misc/master/saldl_banner_alpha.png[width="100%", alt="saldl banner"]
 :title: saldl: A lightweight well-featured CLI downloader optimized for speed and early preview
 
-*saldl* is a lightweight yet well-featured CLI downloader optimized for speed
+*saldl* is a lightweight well-featured CLI downloader optimized for speed
 and early preview.
+ +
+ +
 
 By default, *saldl* splits a download into fixed-sized chunks and download them
-in-order with multiple concurrent connections. Classic modes
-(single chunk single connection, no. of chunks = no. of connections)
-are also available as 'options'.
+in-order with multiple concurrent connections. Other modes are also available
+as 'options'.
+ +
+ +
 
 All 'options' are documented in the <<man,manual page>>.
+ +
+ +
 
-*saldl* is open-source and multi-platform. It is available for everyone
-under the terms of the https://www.gnu.org/licenses/agpl.txt[AGPL].
+*saldl* is open-source and multi-platform. It has been tested on
+GNU/Linux, Mac OSX, and Windows.
+ +
+ +
+
+
+Windows binaries are provided with
+https://github.com/saldl/saldl/releases[every release].
+Mac OSX users can use *Homebrew* to install *saldl*.
+
+Detailed build/install instructions are available in the
+https://github.com/saldl/saldl/blob/master/README.md[README].
+ +
+ +
+
+saldl is Free Software, available for everyone under the terms
+of the https://www.gnu.org/licenses/agpl.txt[AGPL].
 
 == Screenshot
 
