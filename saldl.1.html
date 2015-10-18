@@ -1284,6 +1284,64 @@ downloaded from scratch. Sub-chunk resume will work as expected.</p></div>
 cases:</p></div>
 <div class="dlist"><dl>
 <dt class="hdlist1">
+<strong>--custom-headers=<em>header(s)</em></strong>
+</dt>
+<dd>
+<p>
+  Add one or more custom headers to the request. Or suppress an auto one.
+  Those headers would be sent to the remote server. If you need to send them
+  to the proxy, use <strong>--proxy-custom-headers</strong>.<br />
+ <br />
+  This option can be passed multiple times.
+ <br />
+  If only one header is passed. It must not end with <em>\r\n</em>. libcurl will
+  add this for us. Multiple headers must be separated by <em>\r\n</em>. And the last
+  on must also not end with an <em>\r\n</em>.<br />
+</p>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+<strong>Three Header formats are acceptable:</strong> 
+</dt>
+<dd>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+1- Header with info 
+</dt>
+<dd>
+<p>
+    <em>Name: info</em>
+</p>
+</dd>
+<dt class="hdlist1">
+2- Header without info 
+</dt>
+<dd>
+<p>
+    <em>Name;</em>
+</p>
+</dd>
+<dt class="hdlist1">
+3- Suppress default header 
+</dt>
+<dd>
+<p>
+    <em>Name:</em>
+</p>
+</dd>
+</dl></div>
+</dd>
+</dl></div>
+</dd>
+<dt class="hdlist1">
+<strong>--proxy-custom-headers=<em>header(s)</em></strong>
+</dt>
+<dd>
+<p>
+  Works like <strong>--custom-headers</strong>. But the headers are passed to the proxy
+  instead of the remote server.
+</p>
+</dd>
+<dt class="hdlist1">
 <strong>-H, --use-HEAD</strong>
 </dt>
 <dd>
@@ -1557,7 +1615,7 @@ granted under the terms of the GNU Affero General Public License (AGPL).</p></di
 <div id="footnotes"><hr /></div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-10-14 17:26:27 EEST
+Last updated 2015-10-18 20:42:42 EEST
 </div>
 </div>
 </body>
