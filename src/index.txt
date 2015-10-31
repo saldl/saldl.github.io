@@ -1,12 +1,22 @@
-:title: saldl: A lightweight well-featured CLI downloader optimized for speed and early preview
-
-= image:https://raw.githubusercontent.com/saldl/misc/master/saldl_banner_alpha.png[width="100%", alt="saldl banner"]
+= saldl: A lightweight well-featured CLI downloader optimized for speed and early preview
+:no title:
 
 [role="top-menu"]
 https://github.com/saldl/saldl[Development] |
 https://github.com/saldl/saldl/releases[Releases] |
 https://saldl.github.io/saldl.1.html[Manual] |
 https://github.com/saldl/saldl/issues/4[Contact]
+
+////
+A hack to create empty lines at the top of a page
+////
+
+[role="invisible"]
+. +
+ +
+
+image:https://raw.githubusercontent.com/saldl/misc/master/saldl_banner_alpha.png[width="100%", alt="saldl banner"] +
+ +
 
 
 *saldl* is a lightweight well-featured CLI downloader optimized for speed
@@ -40,7 +50,7 @@ https://github.com/saldl/saldl/blob/master/README.md[README].
  +
  +
 
-saldl is Free Software, available for everyone under the terms
+*saldl* is Free Software, available for everyone under the terms
 of the https://www.gnu.org/licenses/agpl.txt[AGPL].
 
 == Screenshot
