@@ -539,9 +539,14 @@ body.manpage div.sectionbody {
 	background: #d0d0d0;
 }
 
+.invisible {
+	color: #d0d0d0;
+}
+
 .top-menu {
-	position: fixed;
-	top: 1%;
+	/* position: fixed; */
+	position: absolute;
+	top: 2pt;
 	left: 50%;
 	transform: translateX(-50%);
 	color: #555555;
@@ -552,6 +557,11 @@ body.manpage div.sectionbody {
 	padding-right: 4pt;
 	padding-left: 5pt;
 	font-weight: bold;
+}
+
+img {
+	box-shadow: 0 0 1pt 0pt grey;
+	border-radius: 4pt;
 }
 
 .top-menu a, .top-menu * {
@@ -785,9 +795,6 @@ asciidoc.install();
 </head>
 <body class="article">
 <div id="header">
-<h1><span class="image">
-<img src="https://raw.githubusercontent.com/saldl/misc/master/saldl_banner_alpha.png" alt="saldl banner" width="100%" title="saldl: A lightweight well-featured CLI downloader optimized for speed and early preview" />
-</span></h1>
 </div>
 <div id="content">
 <div id="preamble">
@@ -796,6 +803,18 @@ asciidoc.install();
 <a href="https://github.com/saldl/saldl/releases">Releases</a> |
 <a href="https://saldl.github.io/saldl.1.html">Manual</a> |
 <a href="https://github.com/saldl/saldl/issues/4">Contact</a></p></div>
+<div class="olist arabic invisible"><ol class="arabic">
+<li>
+<p>
++
+<br />
+</p>
+</li>
+</ol></div>
+<div class="paragraph"><p><span class="image">
+<img src="https://raw.githubusercontent.com/saldl/misc/master/saldl_banner_alpha.png" alt="saldl banner" width="100%" />
+</span><br />
+<br /></p></div>
 <div class="paragraph"><p><strong>saldl</strong> is a lightweight well-featured CLI downloader optimized for speed
 and early preview.
 <br />
@@ -820,7 +839,7 @@ Mac OSX users can use <strong>Homebrew</strong> to install <strong>saldl</strong
 <a href="https://github.com/saldl/saldl/blob/master/README.md">README</a>.
 <br />
 <br /></p></div>
-<div class="paragraph"><p>saldl is Free Software, available for everyone under the terms
+<div class="paragraph"><p><strong>saldl</strong> is Free Software, available for everyone under the terms
 of the <a href="https://www.gnu.org/licenses/agpl.txt">AGPL</a>.</p></div>
 </div>
 </div>
@@ -842,7 +861,7 @@ of the <a href="https://www.gnu.org/licenses/agpl.txt">AGPL</a>.</p></div>
 <div id="footnotes"><hr /></div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-10-30 22:07:05 EET
+Last updated 2015-10-31 12:10:13 EET
 </div>
 </div>
 </body>

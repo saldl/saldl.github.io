@@ -2,9 +2,14 @@
 	background: #d0d0d0;
 }
 
+.invisible {
+	color: #d0d0d0;
+}
+
 .top-menu {
-	position: fixed;
-	top: 1%;
+	/* position: fixed; */
+	position: absolute;
+	top: 2pt;
 	left: 50%;
 	transform: translateX(-50%);
 	color: #555555;
@@ -15,6 +20,11 @@
 	padding-right: 4pt;
 	padding-left: 5pt;
 	font-weight: bold;
+}
+
+img {
+	box-shadow: 0 0 1pt 0pt grey;
+	border-radius: 4pt;
 }
 
 .top-menu a, .top-menu * {
