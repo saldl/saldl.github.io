@@ -9,7 +9,7 @@
 .top-menu {
 	/* position: fixed; */
 	position: absolute;
-	top: 2pt;
+	top: 4pt;
 	left: 50%;
 	transform: translateX(-50%);
 	color: #555555;
