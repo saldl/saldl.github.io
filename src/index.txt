@@ -36,7 +36,7 @@ https://saldl.github.io/saldl.1.html[manual].
  +
 
 *saldl* is open-source and multi-platform. It has been tested on
-GNU/Linux, Mac OSX, and Windows.
+GNU/Linux, NetBSD, FreeBSD, OpenBSD, Mac OSX, and Windows.
  +
  +
 
