@@ -1274,35 +1274,23 @@ downloaded from scratch. Sub-chunk resume will work as expected.</p></div>
 </p>
 </dd>
 <dt class="hdlist1">
-<strong>-Z, --no-compress</strong>
+<strong>-z, --compress</strong>
 </dt>
 <dd>
 <p>
-  Don&#8217;t request a compressed response. And skip decompression if
-  compression was forced by the server.
+  Request a compressed response. Single mode would be forced if the server
+  supports compression. Unless <strong>-Z</strong>/<strong>--no-decompress</strong> was passed.
 </p>
 </dd>
 <dt class="hdlist1">
-<strong>-z, --no-decompress</strong>
+<strong>-Z, --no-decompress</strong>
 </dt>
 <dd>
 <p>
-  Explicitly disable decompression. Even if we requested (default)
-  and received compressed data.
+  Disable decompression, whether compression was requested or forced by
+  the server.
 </p>
 </dd>
-</dl></div>
-<div class="admonitionblock">
-<table><tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-<div class="paragraph"><p><strong>-Z</strong>/<strong>--no-compress</strong> implies <strong>-z</strong>/<strong>--no-decompress</strong>.</p></div>
-</td>
-</tr></table>
-</div>
-<div class="dlist"><dl>
 <dt class="hdlist1">
 <strong>-K <em>cookie-file</em>, --cookie-file=<em>cookie-file</em></strong>
 </dt>
@@ -1700,7 +1688,7 @@ granted under the terms of the GNU Affero General Public License (AGPL).</p></di
 <div id="footnotes"><hr /></div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-11-06 21:40:40 EET
+Last updated 2015-11-23 18:19:33 EET
 </div>
 </div>
 </body>
