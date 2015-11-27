@@ -873,10 +873,8 @@ them in-order with multiple concurrent connections.</p></div>
 <p>
   Chunk downloaded, but still not merged.<br />
  <br />
-  This state should be transient. If it&#8217;s not, your system might have
-  load problems. Otherwise, you might benefit from storing chunks in
-  memory buffers as detailed in
-  <a href="#temp-files_vs_mem-bufs"><strong>Temporary Files vs. Memory Buffers</strong></a>.
+  This state should be transient. If it&#8217;s not, your system probably has
+  load problems (CPU/IO/memory).
 </p>
 </dd>
 <dt class="hdlist1">
@@ -941,8 +939,9 @@ downloaded from scratch. Sub-chunk resume will work as expected.</p></div>
 <dd>
 <p>
   Use memory buffers instead of temp files for downloading chunks.<br />
-  See <a href="#temp-files_vs_mem-bufs">Temporary Files vs. Memory Buffers</a>
-  for details.
+  This mode increases memory overhead. And we lose sub-chunk resumability.
+  But it might help performance in some situations, especially when IO is
+  the bottleneck.
 </p>
 </dd>
 <dt class="hdlist1">
@@ -952,6 +951,16 @@ downloaded from scratch. Sub-chunk resume will work as expected.</p></div>
 <p>
   Don&#8217;t create files or write anything to disk.
   This should be only used to test network performance.
+</p>
+</dd>
+<dt class="hdlist1">
+<strong>--no-mmap</strong> (default mode only)
+</dt>
+<dd>
+<p>
+  Read chunk files into buffers instead of using mmap().<br />
+  This option hurts performance and should only be used for
+  debugging.
 </p>
 </dd>
 </dl></div>
@@ -1174,6 +1183,34 @@ downloaded from scratch. Sub-chunk resume will work as expected.</p></div>
 </div>
 <div class="sect2">
 <h3 id="_network_options">Network Options</h3>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+<strong>-6, --resolve-ipv6</strong>
+</dt>
+<dd>
+<p>
+  Only resolve to IPv6 addresses.
+</p>
+</dd>
+<dt class="hdlist1">
+<strong>-4, --resolve-ipv4</strong>
+</dt>
+<dd>
+<p>
+  Only resolve to IPv4 addresses.
+</p>
+</dd>
+</dl></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>If both <strong>-6</strong> and <strong>-4</strong> are passed, what&#8217;s passed last will take precedence.</p></div>
+</td>
+</tr></table>
+</div>
 <div class="dlist"><dl>
 <dt class="hdlist1">
 <strong>-R <em>bandwidth</em>, --connection-max-rate=<em>bandwidth</em></strong>
@@ -1605,38 +1642,6 @@ the <a href="#ui-opts"><strong>--verbose-libcurl</strong></a> option.</p></div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="temp-files_vs_mem-bufs">Temporary Files vs. Memory Buffers</h2>
-<div class="sectionbody">
-<div class="paragraph"><p>By default, <strong>saldl</strong> stores chunks in temporary files. Until they
-are fully downloaded. Then, <strong>saldl</strong> merges those completed chunks
-in <em>&lt;filename&gt;.part.sal</em>, and deletes the temporary files.</p></div>
-<div class="paragraph"><p>This approach allows us to have sub-chunk resumability. And we avoid
-losing any already downloaded data in case of a failure or interruption.</p></div>
-<div class="paragraph"><p>This works very well in most cases. But there exists scenarios
-where this approach is clearly suboptimal.</p></div>
-<div class="paragraph"><p>Suppose you have one of those cheap NAND flash memory devices. Or you
-are using a network file-system. Or your network speed is so fast
-that your storage device can&#8217;t keep up. In those cases, it is advisable
-to avoid any IO activity that is not absolutely necessary.</p></div>
-<div class="paragraph"><p>To optimize for those scenarios, <strong>saldl</strong> can use memory buffers
-(the option <a href="#gen-opts"><strong>-m/--memory-buffers</strong></a>) instead of temporary
-files. But this comes at a cost of losing sub-chunk resumability and
-memory overhead. So, use this option wisely. You should definitely not use
-this option with <a href="#ch-sz-conn"><strong>-w/--whole-file</strong></a>.</p></div>
-<div class="admonitionblock">
-<table><tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-<div class="paragraph"><p>If <a href="#ch-sz-conn">Single mode</a> is enabled, downloaded data is written
-directly to <em>&lt;filename&gt;.part.sal</em></p></div>
-</td>
-</tr></table>
-</div>
-</div>
-</div>
-<div class="sect1">
 <h2 id="_exit_status">EXIT STATUS</h2>
 <div class="sectionbody">
 <div class="dlist"><dl>
@@ -1688,7 +1693,7 @@ granted under the terms of the GNU Affero General Public License (AGPL).</p></di
 <div id="footnotes"><hr /></div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-11-23 18:19:33 EET
+Last updated 2015-11-27 21:41:11 EET
 </div>
 </div>
 </body>
