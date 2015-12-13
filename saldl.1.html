@@ -945,6 +945,31 @@ downloaded from scratch. Sub-chunk resume will work as expected.</p></div>
 </p>
 </dd>
 <dt class="hdlist1">
+<strong>--stdout</strong>
+</dt>
+<dd>
+<p>
+  Write/Pipe output to <strong>stdout</strong>.<br />
+ <br />
+</p>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+Everything else will behave in the same way except: 
+</dt>
+<dd>
+<p>
+  <br />
+   1- The pseudo output filename "STDOUT" will be used.<br />
+   2- Chunks will only be merged (written to stdout) in order.<br />
+   3- Resume is disabled.<br />
+   4- No state is saved in a <em>&lt;filename&gt;.ctrl.sal</em> file.<br />
+   5- If single mode is used, timeouts and other non-fatal response
+      errors will become fatal.<br />
+</p>
+</dd>
+</dl></div>
+</dd>
+<dt class="hdlist1">
 <strong>--read-only</strong>
 </dt>
 <dd>
@@ -1701,7 +1726,7 @@ granted under the terms of the GNU Affero General Public License (AGPL).</p></di
 <div id="footnotes"><hr /></div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-12-01 22:38:01 EET
+Last updated 2015-12-13 22:45:46 EET
 </div>
 </div>
 </body>
