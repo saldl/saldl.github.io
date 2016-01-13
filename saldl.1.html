@@ -934,14 +934,35 @@ downloaded from scratch. Sub-chunk resume will work as expected.</p></div>
 </p>
 </dd>
 <dt class="hdlist1">
-<strong>-m, --memory-buffers</strong>
+<strong>--mirror-url</strong>
 </dt>
 <dd>
 <p>
-  Use memory buffers instead of temp files for downloading chunks.<br />
-  This mode increases memory overhead. And we lose sub-chunk resumability.
-  But it might help performance in some situations, especially when IO is
-  the bottleneck.
+  If the mirror is valid, Assign half the connections to it.<br />
+</p>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+A mirror URL is considered valid when compared to URL if: 
+</dt>
+<dd>
+<p>
+ <br />
+  1- Both do not have the same effective URL.<br />
+  2- Both have the same content size.<br />
+  3- Both support ranges.<br />
+  4- Both are not FTP.<br />
+  5- Both are not using content encoding. Or both do, but we will not
+     decode/decompress.
+</p>
+</dd>
+</dl></div>
+</dd>
+<dt class="hdlist1">
+<strong>--fatal-if-invalid-mirror</strong>
+</dt>
+<dd>
+<p>
+  Fatally fail if the mirror is invalid. Only a warning is displayed by default.
 </p>
 </dd>
 <dt class="hdlist1">
@@ -968,6 +989,17 @@ Everything else will behave in the same way except:
 </p>
 </dd>
 </dl></div>
+</dd>
+<dt class="hdlist1">
+<strong>-m, --memory-buffers</strong>
+</dt>
+<dd>
+<p>
+  Use memory buffers instead of temp files for downloading chunks.<br />
+  This mode increases memory overhead. And we lose sub-chunk resumability.
+  But it might help performance in some situations, especially when IO is
+  the bottleneck.
+</p>
 </dd>
 <dt class="hdlist1">
 <strong>--read-only</strong>
@@ -1503,6 +1535,17 @@ cases:</p></div>
 </p>
 </dd>
 <dt class="hdlist1">
+<strong>--http2-upgrade</strong>
+</dt>
+<dd>
+<p>
+  Try HTTP/2 requests with plain HTTP.<br />
+  This option only has effect if saldl was built with and running
+  (libcurl &gt;= 7.47.0). Otherwise, HTTP/2 would be default for both
+  HTTP and HTTPS.
+</p>
+</dd>
+<dt class="hdlist1">
 <strong>--no-tcp-keep-alive</strong>
 </dt>
 <dd>
@@ -1726,7 +1769,7 @@ granted under the terms of the GNU Affero General Public License (AGPL).</p></di
 <div id="footnotes"><hr /></div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-12-13 22:45:46 EET
+Last updated 2016-01-13 22:00:12 EET
 </div>
 </div>
 </body>
