@@ -938,22 +938,41 @@ downloaded from scratch. Sub-chunk resume will work as expected.</p></div>
 </dt>
 <dd>
 <p>
-  If the mirror is valid, Assign half the connections to it.<br />
+  If the mirror is valid, Assign half the connections to it.
 </p>
 <div class="dlist"><dl>
 <dt class="hdlist1">
 A mirror URL is considered valid when compared to URL if: 
 </dt>
 <dd>
+<div class="olist arabic"><ol class="arabic">
+<li>
 <p>
- <br />
-  1- Both do not have the same effective URL.<br />
-  2- Both have the same content size.<br />
-  3- Both support ranges.<br />
-  4- Both are not FTP.<br />
-  5- Both are not using content encoding. Or both do, but we will not
-     decode/decompress.
+Both do not have the same effective URL.
 </p>
+</li>
+<li>
+<p>
+Both have the same content size.
+</p>
+</li>
+<li>
+<p>
+Both support ranges.
+</p>
+</li>
+<li>
+<p>
+Both are not FTP.
+</p>
+</li>
+<li>
+<p>
+Both are not using content encoding. Or both do, but we will not
+      decode/decompress.
+</p>
+</li>
+</ol></div>
 </dd>
 </dl></div>
 </dd>
@@ -970,23 +989,41 @@ A mirror URL is considered valid when compared to URL if:
 </dt>
 <dd>
 <p>
-  Write/Pipe output to <strong>stdout</strong>.<br />
- <br />
+  Write/Pipe output to <strong>stdout</strong>.
 </p>
 <div class="dlist"><dl>
 <dt class="hdlist1">
 Everything else will behave in the same way except: 
 </dt>
 <dd>
+<div class="olist arabic"><ol class="arabic">
+<li>
 <p>
-  <br />
-   1- The pseudo output filename "STDOUT" will be used.<br />
-   2- Chunks will only be merged (written to stdout) in order.<br />
-   3- Resume is disabled.<br />
-   4- No state is saved in a <em>&lt;filename&gt;.ctrl.sal</em> file.<br />
-   5- If single mode is used, timeouts and other non-fatal response
+The pseudo output filename "STDOUT" will be used.
+</p>
+</li>
+<li>
+<p>
+Chunks will only be merged (written to stdout) in order.
+</p>
+</li>
+<li>
+<p>
+Resume is disabled.
+</p>
+</li>
+<li>
+<p>
+No state is saved in a <em>&lt;filename&gt;.ctrl.sal</em> file.
+</p>
+</li>
+<li>
+<p>
+If single mode is used, timeouts and other non-fatal response
       errors will become fatal.
 </p>
+</li>
+</ol></div>
 </dd>
 </dl></div>
 </dd>
@@ -1157,6 +1194,43 @@ Everything else will behave in the same way except:
   (<strong>default</strong>: <em>0</em>)
 </p>
 </dd>
+<dt class="hdlist1">
+<strong>--merge-in-order</strong>
+</dt>
+<dd>
+<p>
+  Only merge chunks in-order.<br />
+ <br />
+  This works as if we were piping to the output file, which could be useful
+  with some storage devices.
+</p>
+</dd>
+</dl></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Warning</div>
+</td>
+<td class="content">
+<div class="olist arabic"><ol class="arabic">
+<li>
+<p>
+It does not make sense to use <strong>--merge-in-order</strong> with <strong>--last-chunks-first</strong>
+   or <strong>--last-size-first</strong>. As merging those chunks will be delayed. Even if
+   they were downloaded early.
+</p>
+</li>
+<li>
+<p>
+If memory buffers <strong>--merge-in-order</strong> are both used, completely downloaded
+   chunks could be lost due to delayed merges if the download was interrupted.
+</p>
+</li>
+</ol></div>
+</td>
+</tr></table>
+</div>
+<div class="dlist"><dl>
 <dt class="hdlist1">
 <strong>-a <em>num</em>, --auto-size=<em>num</em></strong>
 </dt>
@@ -1778,7 +1852,7 @@ granted under the terms of the GNU Affero General Public License (AGPL).</p></di
 <div id="footnotes"><hr /></div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-01-15 00:35:51 EET
+Last updated 2016-01-24 15:33:06 EET
 </div>
 </div>
 </body>
